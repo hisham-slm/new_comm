@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>seller home</title>
+    <link rel="stylesheet" href="{% static 'css/seller_home.css' %}">
+</head>
+
+<body>
+    <div class="main">
+    
+        <div class="container_left">
+            <div class="sub">
+                <h2>MENU</h2>
+            </div>
+            <div class="sub"><a href="{% url 'seller:seller_home' %}">Home</a></div>
+            <div class="sub"><a href="">Product Catelogue</a></div>
+            <div class="sub"><a href="{% url 'seller:add_product'%}">Add Product</a></div>
+            <div class="sub"><a href="">Change Password</a></div>
+            <div class="sub"><a href="{% url 'seller:profile' %}">Profile</a></div>
+            <div class="sub"><a href="">Recent Orders</a></div>
+            <div class="sub"><a href="">Update Stock</a></div>
+            <div class="sub"><a href="">Order History</a></div>
+        </div>
+        <div class="container_right">
+            <div class="seller_name">
+                <span> </span>
+                <h1>WELCOME {{data.seller_name}}</h1>
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+    
+</body>
+
+</html>

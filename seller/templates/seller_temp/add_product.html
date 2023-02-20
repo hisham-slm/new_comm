@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>add product</title>
+    <link rel="stylesheet" href="{% static 'css/add_product.css' %}">
+</head>
+
+<body>
+    <div class="main">
+
+        
+        <div class="container_right">
+            <div class="seller_name">
+                <h3>ADD PRODUCT</h3>
+            </div>
+            <div class="add">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <table class="table_add">
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="Product Name" name="prod_name">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="text" placeholder="Product ID" name="prod_id">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <textarea id="" cols="50" rows="6" placeholder="Description" name="prod_desc"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" placeholder="stock" name="prod_stock">
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="number" placeholder="Price" name="prod_price">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="file" name="prod_image">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input id="btn" type="submit">
+                            </td>
+                        </tr>
+                        {{msg}}
+                    </table>
+                </form>
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .sticky{
+            text-align: center;
+            background-color: black;
+            color: white;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        .sticky a{
+            color:white;
+            text-decoration: none;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="sticky">
+        <a href="{% url 'common:seller_reg' %}">Seller Registration</a>
+        <a href="{% url 'common:seller_login' %}">Seller Login</a>
+        <a href="{% url 'common:customer_reg' %}">Customer Registration</a>
+        <a href="{% url 'common:customer_login' %}">Customer Login</a>
+    </div>
+</body>
+
+</html>

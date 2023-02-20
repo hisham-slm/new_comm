@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.product_img{
+    border-radius:15px ;
+}
+.data{
+    /* background-color: black; */
+    color: white;
+}
+.addtocart{
+    /* background-color: blueviolet; */
+}

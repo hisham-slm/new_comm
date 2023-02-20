@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .image img{
+            width: 200px;
+            height: 200px;
+            border-radius:50%;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <h1>Seller Profile</h1>
+            <td>
+                <div class="image">
+                    <img src="{{data.image.url}}" alt="No Images Found">
+
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Seller Name :
+            </td>
+            <td>{{data.seller_name}}</td>
+        </tr>
+        <tr>
+            <td>
+                Company Name :
+            </td>
+            <td>{{data.company_name}}</td>
+        </tr>
+        <tr>
+            <td>
+                Account No. :
+            </td>
+            <td>{{data.acc_no}}</td>
+        </tr>
+        <tr>
+            <td>
+                IFSC Code :
+            </td>
+            <td>{{data.ifsc}}</td>
+        </tr>
+        <tr>
+            <td>
+                Branch Name :
+            </td>
+            <td>{{data.branch_name}}</td>
+        </tr>
+        <tr>
+            <td>
+                Account Holder Name :
+            </td>
+            <td>{{data.acc_holder_name}}</td>
+        </tr>
+        <tr>
+            <td>
+                Phone Number :
+            </td>
+            <td>{{data.ph_num}}</td>
+        </tr>
+        <tr>
+            <td>
+                E-mail :
+            </td>
+            <td>{{data.email}}</td>
+        </tr>
+        <tr>
+            <td>
+                Address :
+            </td>
+            <td>{{data.address}}</td>
+        </tr>
+        <tr>
+            <td>
+                User Name :
+            </td>
+            <td>{{data.user_name}}</td>
+        </tr>
+    </table>
+</body>
+
+</html>

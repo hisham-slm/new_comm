@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header {
+            text-align: center;
+            background-color: beige;
+        }
+
+        .details {
+            background-color: rgb(245, 245, 245);
+            padding: 10px;
+            text-align: center;
+
+        }
+
+        .line {
+            display: flex;
+            justify-content: center;
+            flex-direction: row;
+
+        }
+        .image img{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Profile</h1>
+    </div>
+    <div class="image">
+        <img src="{{c_data.image.url}}" alt="">
+    </div>
+    <div class="details">
+        <div class="line">
+            <td>Name :</td> <td>{{c_data.customer_name}}</td>
+        </div>
+        <div class="line">
+            <td>Email :</td>
+            <td>{{c_data.e_mail}}</td>
+        </div>
+        <div class="line">
+            <td>Shipping Address :</td>
+            <td>{{c_data.address}}</td>
+        </div>
+        <div class="line">
+            <td>Phone Number :</td>
+            <td>{{c_data.ph_number}}</td>
+        </div>
+    </div>
+</body>
+
+</html>

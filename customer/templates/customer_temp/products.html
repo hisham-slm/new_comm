@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'shoe_static/shoes.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'shoe_static\Bootstrap\css\bootstrap.css'%}">
+</head>
+<title>Shoes</title>
+<link rel="stylesheet" href="">
+<style>
+    .button{
+        /* font-family: "Poppins"; */
+        font-weight: bold;
+        background-color: transparent;
+        border: none;
+        color: rgb(0, 0, 0);
+        padding: 5px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        box-shadow: 5px 5px 10px #888;
+    }
+    #heart{
+        outline-style: 1px solid black;
+    }
+    .header{
+        text-align: center;
+        background-color: rgb(214, 213, 213);
+    }
+</style>
+
+<div class="header">
+    <h1>Products</h1>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 col-6">
+            <div class="product_card">
+                <img src="{% static 'shoe_static/images/forum_high.jpg'%}" alt="">
+                <h5><a href=>Adidas Forum High</a></h5>
+                <button onclick="alert('Your Order has been added to the cart') " class="button">Add to cart</button>
+                <a href=""><i id="heart" class="fa fa-heart" style="font-size:22px;color:white;padding:20px;"></i></a>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="product_card">
+                <img src="{% static 'shoe_static/images/con_runstar.jpg'%}" alt="">
+                <h5><a href="">Converse Run Star Motion</a></h5>
+                <button onclick="alert('Your Order has been added to the cart') " class="button">Add to cart</button>
+                <a href=""><i id="heart" class="fa fa-heart" style="font-size:22px;color:white;padding:20px;"></i></a>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="product_card">
+                <img src="{% static 'shoe_static/images/sb_red.jpg'%}" alt="">
+                <h5><a href="">Nike SB Dunk University Red</a></h5>
+                <button onclick="alert('Your Order has been added to the cart') " class="button">Add to cart</button>
+                <a href=""><i id="heart" class="fa fa-heart" style="font-size:22px;color:white;padding:20px;"></i></a>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="product_card">
+                <img src="{% static 'shoe_static/images/vans_check.jpg'%}" alt="">
+                <h5><a href="">Vans Old Skool Checks</a></h5>
+                <button onclick="alert('Your Order has been added to the cart') " class="button">Add to cart</button>
+                <a href=""><i id="heart" class="fa fa-heart" style="font-size:22px;color:white;padding:20px;"></i></a>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-3 col-6">
+            <div class="product_card">
+                <img src="{% static 'shoe_static/images/badb_forum.jpg'%}" alt="">
+                <h5><a href="">Adidas Bad Bunny Forum</a></h5>
+                <button onclick="alert('Your Order has been added to the cart') " class="button">Add to cart</button>
+                <a href=""><i id="heart" class="fa fa-heart" style="font-size:22px;color:white;padding:20px;"></i></a>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="product_card">
+                <img src="{% static 'shoe_static/images/nb650_2.jpg'%}" alt="">
+                <h5><a href="">New Balance 650</a></h5>
+                <button onclick="alert('Your Order has been added to the cart') " class="button">Add to cart</button>
+                <a href=""><i id="heart" class="fa fa-heart" style="font-size:22px;color:white;padding:20px;"></i></a>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="product_card">
+                <img src="{% static 'shoe_static/images/rsx.jpg'%}" alt="">
+                <h5><a href="">Puma RS-X</a></h5>
+                <button onclick="alert('Your Order has been added to the cart') " class="button">Add to cart</button>
+                <a href=""><i id="heart" class="fa fa-heart" style="font-size:22px;color:white;padding:20px;"></i></a>
+
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="product_card">
+                <img src="{% static 'shoe_static/images/blazer.jpg'%}" alt="">
+                <h5><a href="">Nike Blazers</a></h5>
+                <button onclick="alert('Your Order has been added to the cart') " class="button">Add to cart</button>
+                <a href=""><i id="heart" class="fa fa-heart" style="font-size:22px;color:white;padding:20px;"></i></a>
+
+            </div>
+        </div>
+    </div>
+</div>

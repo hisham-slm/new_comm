@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .header{
+            display: flex;
+            flex-direction: row;
+        }
+        .header_left{
+            text-align: left;
+            padding: 2px;
+        }
+        .header_center{
+            text-align: center;
+            text-decoration:  none;
+            padding: 20px;
+
+        }
+        .header_right{
+            text-decoration:  none;
+            padding: 20px;
+            text-align: right;
+        }
+        .header_center a,.header_right a{
+            text-decoration: none;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header_left">
+            <h1>Customer</h1>
+        </div>
+        <div class="header_center">
+            <a href="{% url 'customer:products' %}">Products</a>
+            <a href="{% url 'customer:orders' %}">Orders</a>
+            <a href="{% url 'customer:change_pass' %}">Change Password</a>
+        </div>
+        <div class="header_right">
+            <a href="{% url 'customer:cart' %}">My Cart</a>
+            <a href="">Log Out</a>
+            <a href="{% url 'customer:profile' %}">Profile</a>
+        </div>
+    </div>
+</body>
+</html>
