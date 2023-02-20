@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 from common.models import Customer
+from seller.models import Product
 
 # Create your views here.
 def customer(request):
@@ -16,7 +17,8 @@ def change_pass(request):
     return render (request , 'customer_temp/change_pass.html')
 
 def home(request):
-    return render (request, 'customer_temp\customer_home.html')
+    prod_list = Product.objects.all()
+    return render (request, 'customer_temp\customer_home.html',{'prod_data':prod_list})
 
 def profile(request):
     customer_data = Customer.objects.get(id=request.session['customer'])
@@ -27,3 +29,7 @@ def cart(request):
 
 def orders(request):
     return render (request, 'customer_temp\order.html')
+def logout(request):
+    del request.session['customer']
+    request.session.flush()
+    return redirect('common:home')

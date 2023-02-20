@@ -23,7 +23,7 @@ def add_product(request):
         prod_image = request.FILES['prod_image']
 
         new_product = Product(
-        seller = request.session['seller'].seller_id,
+        seller_id = request.session['seller'],
         prod_name = prod_name,
         prod_num = prod_id,
         prod_des = prod_desc,
@@ -38,3 +38,8 @@ def add_product(request):
 def profile(request):
     seller_data = Seller.objects.get(id=request.session['seller'])
     return render (request, 'seller_temp/profile.html',{'data':seller_data})
+
+def prod_cat (request):
+    prod_data = Product.objects.filter(seller_id=request.session['seller'])
+
+    return render (request, 'seller_temp\product_catelogue.html',{'prod_data':prod_data})

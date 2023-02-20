@@ -18,7 +18,7 @@
                 <h2>MENU</h2>
             </div>
             <div class="sub"><a href="{% url 'seller:seller_home' %}">Home</a></div>
-            <div class="sub"><a href="">Product Catelogue</a></div>
+            <div class="sub"><a href="{% url 'seller:prod_cat'%}">Product Catelogue</a></div>
             <div class="sub"><a href="{% url 'seller:add_product'%}">Add Product</a></div>
             <div class="sub"><a href="">Change Password</a></div>
             <div class="sub"><a href="{% url 'seller:profile' %}">Profile</a></div>
@@ -28,7 +28,6 @@
         </div>
         <div class="container_right">
             <div class="seller_name">
-                <span> </span>
                 <h1>WELCOME {{data.seller_name}}</h1>
             </div>
 
