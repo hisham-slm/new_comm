@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>
+        Edit Profile
+    </h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div class="details">
+            <div class="line">
+                <td>Name :</td> <input type="text" value="{{customer_data.customer_name}}"  name="update_name">
+            </div>
+            <div class="line">
+                <td>Email :</td>
+                <input type="email" name="update_mail" value="{{customer_data.e_mail}}" id="" >
+            </div>
+            <div class="line">
+                <td>Shipping Address :</td>
+                <input type="text" name="update_address" id="" value="{{customer_data.address}}" >
+            </div>
+            <div class="line">
+                <td>Phone Number :</td>
+                <input type="number" name="update_num" value="{{customer_data.ph_number}}">
+            </div>
+            <br>
+            <div class="line">
+                <a href="{% url 'customer:edit_profile' %}">
+                    <button type="submit">Submit</button>
+                </a>
+            </div>
+        </div>
+    </form>
+</body>
+</html>

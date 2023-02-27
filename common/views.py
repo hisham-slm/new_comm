@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.http import JsonResponse
 from django.shortcuts import render,redirect
 
 from common.models import Customer, Seller
@@ -105,3 +106,7 @@ def customer_login(request):
 
     return render (request ,'home_temp/customer_login.html',{'msg':msg})
 
+def email_exist(request):
+    email = request.POST['email']
+    status = Customer.objects.filter(e_mail = email).exists()
+    return JsonResponse({'status':status})

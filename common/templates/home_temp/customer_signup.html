@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <title>Document</title>
     <style>
-        #main1{
+        #main1 {
             display: flex;
             width: 100%;
             height: 100vh;
@@ -14,62 +17,88 @@
             justify-content: center;
             align-items: center;
         }
-        .div2{
+
+        .div2 {
             width: 50%;
             height: 70vh;
-            background-color:rgb(237, 232, 232);
+            background-color: rgb(237, 232, 232);
         }
-
     </style>
 </head>
+
 <body>
-<div id="main1">
-<div class="div2">
-    <h3 text-align="center" >customer regstration</h3>
-    <table text-align="center" style="margin-top: 50px;">
-        <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-        <tr>
-            <td><label for="">full name </label></td>
-            <td><input style="width: 200px;" type="text" name="c_name"></td>
-        </tr>
-        
-        <tr>
-            <td><label for="">gender </label></td>
-            <td>male<input type="radio" name="c_gender" value="male" id="">female<input type="radio" name="c_gender" value="female" id=""></td>
-        </tr>
-        <tr>
-            <td><label for="">number</label></td>
-            <td><input style="width: 200px;" type="text"  name="c_ph_num"></td>
-        </tr>
-        <tr>
-            <td><label for="">email</label></td>
-            <td><input style="width: 200px;" type="email" name="c_mail" id=""></td>
-        </tr>
-        <tr>
-        <td><label for="add">adderss</label></td>
-        <td><input type="text" style="width: 200px;  height: 30px;"name="c_add" id=""></td>
-        </tr>
-        <tr>
-            <td><label for="">password</label></td>
-            <td><input style="width: 200px;" type="password" name="c_pass" id=""></td>
-        </tr>
-        <tr>
-            <td>Upload Image</td>
-            <td><input type="file" name="c_img"></td>
-        </tr>
-        <tr>
-            <td align="center" colspan="2" ><input type="submit" value="create new account"></td>
-        </tr>
-        
-       
-    </form>
-    </table>
- 
-</div>  
-</div>
+    <div id="main1">
+        <div class="div2">
+            <h3 text-align="center">customer regstration</h3>
+            <table text-align="center" style="margin-top: 50px;">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <tr>
+                        <td><label for="">full name </label></td>
+                        <td><input style="width: 200px;" type="text" name="c_name"></td>
+                    </tr>
+
+                    <tr>
+                        <td><label for="">gender </label></td>
+                        <td>male<input type="radio" name="c_gender" value="male" id="">female<input type="radio"
+                                name="c_gender" value="female" id=""></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">number</label></td>
+                        <td><input style="width: 200px;" type="text" name="c_ph_num"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">email</label></td>
+                        <td><input style="width: 200px;" type="email" name="c_mail" id="email"></td>
+                        <td>
+                            <span id="email_exist"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="add">adderss</label></td>
+                        <td><input type="text" style="width: 200px;  height: 30px;" name="c_add" id=""></td>
+                    </tr>
+                    <tr>
+                        <td><label for="">password</label></td>
+                        <td><input style="width: 200px;" type="password" name="c_pass" id=""></td>
+                    </tr>
+                    <tr>
+                        <td>Upload Image</td>
+                        <td><input type="file" name="c_img"></td>
+                    </tr>
+                    <tr>
+                        <td align="center" colspan="2"><input type="submit" value="create new account"></td>
+                    </tr>
 
 
-    
+                </form>
+            </table>
+
+        </div>
+    </div>
+    <script>
+        $('#email').change(function () {
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()  //passing csrf token in ajax request
+                }
+            })
+
+            $.ajax({
+                url: "{% url 'common:email_exist' %}",  // url in which ajax call is made
+                type: 'POST',  //method in which data is send
+                data: {
+                    email: $(this).val()  //sending data in json fromat here, key is email
+                },
+                success: function (response) {
+                    console.log(response.status)
+                    if (response.status == true) {
+                        $('#email_exist').html('Email Already Exists')
+                    }
+                }
+            })
+        })
+    </script>
 </body>
+
 </html>

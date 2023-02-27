@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 from common.models import Seller
 from seller.models import Product
@@ -43,3 +43,8 @@ def prod_cat (request):
     prod_data = Product.objects.filter(seller_id=request.session['seller'])
 
     return render (request, 'seller_temp\product_catelogue.html',{'prod_data':prod_data})
+
+def logout(request):
+    del request.session['seller']
+    request.session.flush()
+    return redirect('common:home')
