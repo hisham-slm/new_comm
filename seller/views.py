@@ -48,3 +48,15 @@ def logout(request):
     del request.session['seller']
     request.session.flush()
     return redirect('common:home')
+
+def change_password (request):
+    if request.method == "POST":
+        old_pass = request.POST['old_pass']
+        new_pass = request.POST['new_pass']
+        conf_pass = request.POST['conf_pass']
+
+        seller = Seller.objects.get(id = request.session['seller'])
+        if old_pass != seller.password:
+            msg = 'Wrong pass'
+            return msg
+    return render (request, 'seller_temp\change_password.html',{'seller':msg})

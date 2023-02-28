@@ -28,10 +28,19 @@ def profile(request):
     return render (request, 'customer_temp\profile.html',{'c_data':customer_data})
 @auth_customer
 def cart(request):
-    # cart_data = Cart.objects.filter(id=request.session['customer'])
-    cart_data = Cart.objects.annotate(total = F('product__prod_price')*F('quantity'))
+    cart_data = Cart.objects.filter(customer_id=request.session['customer']).annotate(total = F('product__prod_price')*F('quantity'))
+    # cart_data = Cart.objects.annotate(total = F('product__prod_price')*F('quantity'))
+    grand_total = 0
+    for products in cart_data:
+        grand_total = products.total + grand_total
+    request.session['grand_total'] = grand_total
 
-    return render (request, 'customer_temp\cart.html',{'cart_data':cart_data})
+    context = {
+        'cart_data': cart_data,
+        'grand_total' : grand_total
+    }
+
+    return render (request, 'customer_temp\cart.html',context)
 
 @auth_customer
 def orders(request):
@@ -65,7 +74,7 @@ def product_details(request,pid):
     product = Product.objects.get(id=pid)
     if request.method == 'POST':
         quantity = request.POST['qty']
-        prod_exist = Cart.objects.filter(product = pid,customer = request.session['customer'],quantity = quantity).exists()
+        prod_exist = Cart.objects.filter(product = pid,customer = request.session['customer']).exists()
         if not prod_exist :
             item = Cart(customer_id = request.session['customer'],product_id = pid,quantity = quantity)
             item.save()

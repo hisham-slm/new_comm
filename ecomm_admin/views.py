@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
-
+from rest_framework.response import Response
 from ecomm_admin.models import Admin
-
+from rest_framework.decorators import api_view
 # Create your views here.
 
 
@@ -20,3 +20,8 @@ def admin_login(request):
 
 def admin_home(request):
     return render (request, 'admin_temp/admin_home.html')
+
+@api_view(['GET'])
+def index(request):
+    message = "Congratulations, you have created an API"
+    return Response(message)

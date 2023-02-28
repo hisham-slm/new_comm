@@ -52,7 +52,7 @@
                     </td>
     </div>
     <td>
-        {{cart.product.prod_name}}
+        {{cart.prod_name}}
     </td>
     <td>{{cart.product.prod_price}}</td>
     <td>
@@ -64,6 +64,11 @@
     </td>
     </tr>
     {% endfor %}
+    <tr>
+        <td>
+            Total is : {{grand_total}}
+        </td>
+    </tr>
     </tbody>
     </table>
     </div>
