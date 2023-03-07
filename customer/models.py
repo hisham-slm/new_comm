@@ -1,6 +1,5 @@
 from django.db import models
 from common.models import Customer
-
 from seller.models import Product
 
 # Create your models here.

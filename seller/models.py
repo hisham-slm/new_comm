@@ -11,6 +11,7 @@ class Product(models.Model):
     prod_stock = models.BigIntegerField()
     prod_price = models.FloatField()
     prod_image = models.ImageField()
+    prod_cat = models.CharField(max_length=500,default='')
 
 
     class Meta:

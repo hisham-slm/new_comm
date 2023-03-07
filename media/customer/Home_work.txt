@@ -1,0 +1,18 @@
+locate the datas into the local storage and show it in the table as shown in to do
+
+lists 
+p name : /////////
+des : /////////////
+	/////////
+
+quantity : ////////////
+
+price : ////////
+
+
+(The goal is to donot reset the datas entered and stored in that table while refreshing)
+
+
+jaseel track pending:
+	* life of pazham
+	* poomaram

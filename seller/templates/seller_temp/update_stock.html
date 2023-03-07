@@ -6,56 +6,171 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.3.js"
+        integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
     <title>update product</title>
-    <link rel="stylesheet" href="{% static 'css/update_stock.css' %}">
+    <style>
+        .main {
+            display: flex;
+        }
+
+        .container_left {
+            display: flex;
+            flex-direction: column;
+            width: 250px;
+
+        }
+
+        .sub {
+            background-color: black;
+            margin: 4px;
+            padding: 5px;
+            border-radius: 7px 0px 0px 7px;
+        }
+
+        .sub:hover {
+            background-color: rgb(137, 137, 137);
+            margin: 7px;
+            padding: 8px;
+            border-radius: 10px;
+
+        }
+
+        .sub h2 {
+            font-family: sans-serif;
+            color: white;
+            padding-left: 5px;
+        }
+
+        .sub a {
+            text-decoration: none;
+            color: white;
+            padding-left: 5px;
+        }
+
+        .container_right {
+            width: 100%;
+
+        }
+
+        .seller_name {
+            background-color: black;
+            color: white;
+            margin-top: 4px;
+            padding: 10px;
+        }
+
+
+        .update {
+            padding: 30px;
+            background-color: whitesmoke;
+        }
+
+        .update_table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        td {
+
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        #select_p {
+            height: 30px;
+            width: 100px;
+        }
+
+        #select_c {
+            height: 30px;
+            width: 100px;
+        }
+    </style>
 </head>
 
 <body>
     <div class="main">
-    
-        <div class="container_left">
-            <div class="sub">
-                <h2>MENU</h2>
-            </div>
-            <div class="sub"><a href="{% url 'seller:seller_home' %}">Home</a></div>
-            <div class="sub"><a href="{% url 'seller:product_catelogue' %}">Product Catelogue</a></div>
-            <div class="sub"><a href="{% url 'seller:add_product' %}">Add Product</a></div>
-            <div class="sub"><a href="{% url 'seller:change_password' %}">Change Password</a></div>
-            <div class="sub"><a href="">Profile</a></div>
-            <div class="sub"><a href="">Recent Orders</a></div>
-            <div class="sub"><a href="{% url 'seller:update_stock' %}">Update Stock</a></div>
-            <div class="sub"><a href="{% url 'seller:order_history' %}">Order History</a></div>
-        </div>
         <div class="container_right">
             <div class="seller_name">
                 <h3>UPDATE STOCK</h3>
             </div>
-            
-          
-               
-               
 
-                <div class="update">
-                    <table class="update_table">
-                        <tr>
-                            <td>
-                                <select name="" id="select_p">
-                                    <option value="">select </option>
-                                    <option value="">product1</option>
-                                    <option value="">product2</option>
+
+
+
+
+            <div class="update">
+                <table class="update_table">
+                    <tr>
+                        <td>
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <select name="user_input" id="select_cat">
+                                    <option  value="electronics">electronics</option>
+                                    <option  value="random">random</option>
                                 </select>
-                            </td>
+                            </form>
+                        </td>
+                        <span id="span"></span>
+
+
+
+                        <script>
+                            $('#select_cat').change(function () {
+                                var ctgry = $(this).val()
+                                console.log(ctgry)
+                                $.ajaxSetup({
+                                    headers: {
+                                        "X-CSRFToken": $('[name=csrfmiddlewaretoken]').val()  //passing csrf token in ajax request
+                                    }
+                                })
+
+                                $.ajax({
+                                    url: "{% url 'seller:update_stock' %}",  // url of where ajax call has to be made
+                                    type: 'POST',  //method in which data to be sent
+                                    data: {
+                                        'prod_cat': ctgry
+                                    },
+                                    success: function (response) {
+                                        if (response.status == true){
+                                            console.log(response.user_input)
+                                            console.log("Success")
+                                        }
+                                        else{
+                                            console.log(response.user_input)
+                                        }
+                                    }
+                                })
+                            })
+                        </script>
+
+
+
+
+                        <td>
+                            <select name="" id="select_p">
+                                {% for category in prod_data %}
+                                <option value="">{{category.prod_name}}</option>
+                                {% endfor %}
+                            </select>
+                        </td>
+
+                        <td>
+                            <b>Current stock :</b>
+                        </td>
+                        <form action="" method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
                             <td>
-                                <b>Current stock :<span>xx</span></b>
+                                <input type="number" name="" id="" placeholder="update stock">
                             </td>
-                            <td>
-                                <b>New stock : <span>xx</span></b>
-                            </td>
-                        </tr>
-                        
-                    </table>
-                </div>
-            
+                        </form>
+                    </tr>
+                    {{prod_data.id}}
+
+                </table>
+            </div>
+
 
 
 
@@ -66,7 +181,38 @@
 
         </div>
     </div>
-    
+
 </body>
 
 </html>
+
+<script>
+    $(document).ready(function () {
+
+        $('#submit_button').click(function () {
+            email = $('#email').val()
+            password = $('#password').val()
+            $.ajax({
+                url: 'http://127.0.0.1:8000/admin/login',
+                data: {
+                    'username': email,
+                    'password': password,
+
+
+                },
+                type: 'POST',
+                success: function (response) {
+                    console.log(response.status)
+                    if (response.status == true) {
+                        window.location.href = 'http://127.0.0.1:5500/school_admin/school_admin.html'
+                        console.log('if')
+                    }
+                    else {
+                        $('#error').html("Invalid Email or Password")
+                        console.log('else')
+                    }
+                }
+            })
+        })
+    })
+</script>

@@ -41,7 +41,9 @@ INSTALLED_APPS = [
     'common',
     'customer',
     'seller',
-    'ecomm_admin'
+    'ecomm_admin',
+    'rest_framework',
+    
     
 ]
 
@@ -141,3 +143,38 @@ EMAIL_HOST_USER = 'disdummy33@gmail.com'
 EMAIL_HOST_PASSWORD = 'nsvpwilvrgocnlcd'
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+LOGGING = {
+    'version' : 1,
+    "disable_existing_loggers" : False,
+    'handlers' : {
+        'file': {
+            'level' : "DEBUG",
+            'class' : 'logging.FileHandler',
+            'filename' : BASE_DIR/'logs/debug.log'
+        },
+        'infofile': {
+            'level':'INFO',
+            'class' : 'logging.FileHandler',
+            'filename' : BASE_DIR/'logs/info.log',
+            'formatter':'simpleRe',
+
+        },
+    },
+
+    'loggers' : {
+        'django' : {
+            'handlers' : ['file','infofile'],
+            'level' : 'DEBUG',
+        },    
+    },
+    'formatters':{
+    'simpleRe':{    
+        'format':'{levelname} {asctime} {module} {message}',
+        'style' : '{',
+
+    
+        }
+    }
+}
+

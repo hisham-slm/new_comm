@@ -1,5 +1,6 @@
+from django.http import JsonResponse
 from django.shortcuts import render,redirect
-
+from rest_framework.response import Response
 from common.models import Seller
 from seller.models import Product
 
@@ -49,6 +50,9 @@ def logout(request):
     request.session.flush()
     return redirect('common:home')
 
+
+
+
 def change_password (request):
     if request.method == "POST":
         old_pass = request.POST['old_pass']
@@ -60,3 +64,19 @@ def change_password (request):
             msg = 'Wrong pass'
             return msg
     return render (request, 'seller_temp\change_password.html',{'seller':msg})
+
+
+def update_stock(request):
+    if request.method == 'POST':
+        user_input = request.POST['prod_name']
+        try:
+            prod_data = Product.objects.filter(prod_name = user_input)
+            status = True
+            return JsonResponse(status,prod_data,user_input)
+        except:
+            status = False
+            msg = 'Nothing to show here'
+            return JsonResponse(status,msg)
+
+    
+    return render(request, 'seller_temp/update_stock.html')

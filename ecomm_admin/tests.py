@@ -10,7 +10,7 @@ class TestSample(TestCase):
         self.client = APIClient
 
     def test_index(self):
-        url = reverse('index')
+        url = reverse('admin:index')
         res = self.client.get(url)
         print(res.data)
 

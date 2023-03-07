@@ -1,0 +1,15 @@
+INFO 2023-03-06 10:21:08,528 autoreload Watching for file changes with StatReloader
+INFO 2023-03-06 10:52:08,630 autoreload Watching for file changes with StatReloader
+INFO 2023-03-06 10:55:08,086 autoreload Watching for file changes with StatReloader
+INFO 2023-03-06 10:55:13,287 autoreload F:\Baabtra_ecomm\e_comm\e_comm\settings.py changed, reloading.
+INFO 2023-03-06 10:55:14,044 autoreload Watching for file changes with StatReloader
+INFO 2023-03-06 10:55:17,584 autoreload F:\Baabtra_ecomm\e_comm\e_comm\settings.py changed, reloading.
+INFO 2023-03-06 10:55:18,275 autoreload Watching for file changes with StatReloader
+INFO 2023-03-06 11:11:23,586 autoreload Watching for file changes with StatReloader
+INFO 2023-03-06 11:11:34,176 basehttp "GET / HTTP/1.1" 200 876
+INFO 2023-03-06 11:11:36,605 basehttp "GET /seller_login/ HTTP/1.1" 200 893
+INFO 2023-03-06 11:12:02,652 basehttp "POST /seller_login/ HTTP/1.1" 302 0
+INFO 2023-03-06 11:12:02,733 basehttp "GET /seller/seller_home HTTP/1.1" 200 1351
+WARNING 2023-03-06 11:12:02,772 basehttp "GET /static/css/seller_home.css HTTP/1.1" 404 1816
+INFO 2023-03-06 11:12:05,426 basehttp "GET /seller/logout HTTP/1.1" 302 0
+INFO 2023-03-06 11:12:05,435 basehttp "GET / HTTP/1.1" 200 876

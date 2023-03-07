@@ -58,13 +58,13 @@ def edit_profile(request):
         address = request.POST['update_address']
         ph_num = request.POST['update_num']
 
-        update_cust = Customer.objects.get(id=request.session['customer'])
-        update_cust.customer_name = name
-        update_cust.e_mail = mail
-        update_cust.address = address
-        update_cust.ph_number = ph_num
+        customer_data = Customer.objects.get(id=request.session['customer'])
+        customer_data.customer_name = name
+        customer_data.e_mail = mail
+        customer_data.address = address
+        customer_data.ph_number = ph_num
         
-        update_cust.save()
+        customer_data.save()
         return redirect('customer:profile')
     cust_data = Customer.objects.get(id=request.session['customer'])
     return render(request,'customer_temp/edit_profile.html',{'customer_data':cust_data})
